@@ -5,7 +5,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.itemContainer}>
-        <View style={styles.leftContainer}></View>
+        <View style={styles.leftContainer}>
+          <Image
+            style={{ width: 100, height: 100 }}
+            source={{ uri: "https://picsum.photos/id/10/300/300" }}
+          />
+        </View>
         <View style={styles.rightContainer}></View>
       </View>
       <StatusBar style="auto" />
