@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Image, View, Text } from "react-native";
+import { StyleSheet, Image, View, Text, SafeAreaView } from "react-native";
 import { ListItem } from "./components/ListItem";
 
 export default function App() {
@@ -16,6 +16,9 @@ export default function App() {
         author="Japanニュース"
       />
       <StatusBar style="auto" />
+      <View style={[styles.box, { backgroundColor: "red" }]} />
+      <View style={[styles.box, { backgroundColor: "blue" }]} />
+      <View style={[styles.box, { backgroundColor: "green" }]} />
     </View>
   );
 }
@@ -23,8 +26,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: "column",
     backgroundColor: "#eee",
-    alignItems: "center",
+    alignItems: "flex-end",
     justifyContent: "center",
+  },
+  box: {
+    width: 100,
+    height: 100,
   },
 });
