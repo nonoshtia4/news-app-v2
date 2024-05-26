@@ -1,4 +1,4 @@
-import { StyleSheet, Image, View, Text } from "react-native";
+import { StyleSheet, Image, View, Text, TouchableOpacity } from "react-native";
 
 /**
  *
@@ -9,36 +9,32 @@ import { StyleSheet, Image, View, Text } from "react-native";
  * } props
  * @returns
  */
-export const ListItem = (props) => {
+export const ListItem = ({ imageUrl, title, author, onPress }) => {
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={styles.leftContainer}>
-        <Image style={{ width: 100, height: 100 }} source={{ uri: props.imageUrl }} />
+        {!!imageUrl && <Image style={{ width: 100, height: 100 }} source={{ uri: imageUrl }} />}
       </View>
       <View style={styles.rightContainer}>
-        <Text numberOfLines={3}>{props.title}</Text>
-        <Text style={styles.subText}>{props.author}</Text>
+        <Text numberOfLines={3} style={styles.text}>
+          {title}
+        </Text>
+        <Text style={styles.subText}>{author}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#eee",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   itemContainer: {
     height: 100,
-    widtth: "100%",
+    width: "100%",
     flexDirection: "row",
-    backgroundColor: "white",
+    backgroundColor: "#fff",
+    marginVertical: 5,
   },
   leftContainer: {
     width: 100,
-    backgroundColor: "green",
   },
   rightContainer: {
     flex: 1,
@@ -47,8 +43,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    marginBottom: 8,
-    fontWeight: "bold",
   },
   subText: {
     fontSize: 12,
