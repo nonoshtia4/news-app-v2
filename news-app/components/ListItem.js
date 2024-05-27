@@ -6,6 +6,7 @@ import { StyleSheet, Image, View, Text, TouchableOpacity } from "react-native";
  *  imageUrl: 画像URL{string}
  *  title: タイトル{string}
  *  author: ニュース提供元{string}
+ *  onPress: タップされた時の処理{function}
  * } props
  * @returns
  */
