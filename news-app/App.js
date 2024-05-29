@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Image, View, Text, ScrollView, SafeAreaView } from "react-native";
+import { StyleSheet, Image, View, Text, ScrollView, SafeAreaView, FlatList } from "react-native";
 import { ListItem } from "./components/ListItem";
 import articles from "./dummies/articles";
 
@@ -16,7 +16,12 @@ export default function App() {
   });
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>{items}</ScrollView>
+      <FlatList
+        data={articles}
+        renderItem={({ item }) => {
+          return <ListItem imamgeUrl={item.urlToImage} title={item.title} author={item.author} />;
+        }}
+      />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
