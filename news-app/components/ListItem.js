@@ -1,5 +1,4 @@
 import { StyleSheet, Image, View, Text, TouchableOpacity } from "react-native";
-
 /**
  *
  * @param {
