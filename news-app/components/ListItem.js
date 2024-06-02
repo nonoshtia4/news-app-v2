@@ -9,7 +9,7 @@ import { StyleSheet, Image, View, Text, TouchableOpacity } from "react-native";
  * } props
  * @returns
  */
-export const ListItem = ({ imageUrl, title, author, onPress }) => {
+export const ListItem = (props) => {
   return (
     <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={styles.leftContainer}>
