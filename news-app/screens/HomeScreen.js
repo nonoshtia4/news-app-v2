@@ -4,8 +4,9 @@ import { ListItem } from "../components/ListItem";
 import axios from "axios";
 import Constants from "expo-constants";
 
-const URL = `https://newsapi.org/v2/top-headlines?country=jp&category=business&apiKey=${Constants.manifest.extra.newsApiKey}`;
-export const HomeScreen = () => {
+//const URL = `https://newsapi.org/v2/top-headlines?country=jp&category=business&apiKey=${Constants.manifest.extra.newsApiKey}`;
+const URL = `https://newsapi.org/v2/top-headlines?country=jp&category=business&apiKey=660052f33a97433da08993a249b0fdaf`;
+export const HomeScreen = ({ navigation }) => {
   const [articles, setArticles] = useState([]);
   const fetchArticles = async () => {
     try {
@@ -25,7 +26,14 @@ export const HomeScreen = () => {
       <FlatList
         data={articles}
         renderItem={({ item }) => {
-          return <ListItem imamgeUrl={item.urlToImage} title={item.title} author={item.author} />;
+          return (
+            <ListItem
+              imamgeUrl={item.urlToImage}
+              title={item.title}
+              author={item.author}
+              onPress={() => navigation.navigate("Article")}
+            />
+          );
         }}
         keyExtractor={(item, index) => index.toString()}
       />

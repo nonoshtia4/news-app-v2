@@ -11,15 +11,15 @@ import { StyleSheet, Image, View, Text, TouchableOpacity } from "react-native";
  */
 export const ListItem = (props) => {
   return (
-    <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
+    <TouchableOpacity style={styles.itemContainer} onPress={props.onPress}>
       <View style={styles.leftContainer}>
-        {!!imageUrl && <Image style={{ width: 100, height: 100 }} source={{ uri: imageUrl }} />}
+        <Image style={{ width: 100, height: 100 }} source={{ uri: props.imageUrl }} />
       </View>
       <View style={styles.rightContainer}>
         <Text numberOfLines={3} style={styles.text}>
-          {title}
+          {props.title}
         </Text>
-        <Text style={styles.subText}>{author}</Text>
+        <Text style={styles.subText}>{props.author}</Text>
       </View>
     </TouchableOpacity>
   );

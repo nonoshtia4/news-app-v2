@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, Text } from "react-native";}
+import { StyleSheet, SafeAreaView, Text } from "react-native";
 
 export const ArticleScreen = () => {
   return (
@@ -14,4 +14,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 });
-
