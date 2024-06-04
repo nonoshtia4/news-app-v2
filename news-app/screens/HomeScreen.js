@@ -31,7 +31,7 @@ export const HomeScreen = ({ navigation }) => {
               imamgeUrl={item.urlToImage}
               title={item.title}
               author={item.author}
-              onPress={() => navigation.navigate("Article")}
+              onPress={() => navigation.navigate("Article", { article: item })}
             />
           );
         }}
