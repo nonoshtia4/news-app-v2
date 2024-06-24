@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
-import { StyleSheet, SafeAreaView, FlatList } from "react-native";
+import { useState, useEffect } from "react";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, FlatList, SafeAreaView } from "react-native";
 import { ListItem } from "../components/ListItem";
-import axios from "axios";
 import Constants from "expo-constants";
+import axios from "axios";
 
-//const URL = `https://newsapi.org/v2/top-headlines?country=jp&category=business&apiKey=${Constants.manifest.extra.newsApiKey}`;
-const URL = `https://newsapi.org/v2/top-headlines?country=jp&category=business&apiKey=660052f33a97433da08993a249b0fdaf`;
+const URL = `https://newsapi.org/v2/top-headlines?country=jp&category=business&apiKey=${Constants.manifest.extra.newsApiKey}`;
+
 export const HomeScreen = ({ navigation }) => {
   const [articles, setArticles] = useState([]);
+
   const fetchArticles = async () => {
     try {
       const response = await axios.get(URL);
-      console.log(response.data.articles);
       setArticles(response.data.articles);
     } catch (error) {
       console.error(error);
@@ -21,22 +22,22 @@ export const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     fetchArticles();
   }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         data={articles}
-        renderItem={({ item }) => {
-          return (
-            <ListItem
-              imamgeUrl={item.urlToImage}
-              title={item.title}
-              author={item.author}
-              onPress={() => navigation.navigate("Article", { article: item })}
-            />
-          );
-        }}
+        renderItem={({ item }) => (
+          <ListItem
+            imageUrl={item.urlToImage}
+            title={item.title}
+            author={item.author}
+            onPress={() => navigation.navigate("Article", { article: item })}
+          />
+        )}
         keyExtractor={(item, index) => index.toString()}
       />
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 };
@@ -49,8 +50,8 @@ const styles = StyleSheet.create({
   itemContainer: {
     height: 100,
     width: "100%",
-    backgroundColor: "white",
     flexDirection: "row",
+    backgroundColor: "#fff",
   },
   leftContainer: {
     width: 100,
@@ -65,5 +66,6 @@ const styles = StyleSheet.create({
   },
   subText: {
     fontSize: 12,
+    color: "gray",
   },
 });

@@ -1,6 +1,6 @@
 import { StyleSheet, SafeAreaView, Text } from "react-native";
 import { WebView } from "react-native-webview";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ClipButton } from "../components/ClipButton";
 import { addClip, deleteClip } from "../store/userSlice";
 
@@ -9,6 +9,7 @@ export const ArticleScreen = ({ route }) => {
   const dispatch = useDispatch();
   const clips = useSelector((state) => state.user.clips);
   const isClipped = clips.some((clip) => clip.url === article.url);
+
   const onPressClip = () => {
     if (isClipped) {
       dispatch(deleteClip(article));

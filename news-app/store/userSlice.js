@@ -15,12 +15,13 @@ export const userSlice = createSlice({
     deleteClip: (state, action) => {
       const deletingClip = action.payload;
       const currentClips = state.clips;
-      const filteredClips = currentClips.filter((clip) => clip.url !== deletingClip.url);
-      stete.clips = filteredClips;
+      const filteredClip = currentClips.filter((clip) => clip.url !== deletingClip.url);
+      state.clips = filteredClip;
     },
   },
 });
 
+// Action creators are generated for each case reducer function
 export const { addClip, deleteClip } = userSlice.actions;
 
 export default userSlice.reducer;
